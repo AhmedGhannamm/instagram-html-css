@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    main{
+      display: flex;
+    }
+    .side-bar{
+      width: 240px;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+      left: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+    }
+    #sidebar-home{
+      font-weight: bold;
+    }
+    .logo{
+      height: 15%;
+      display: flex;
+    }
+    .routes p {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 7px;
+      box-sizing: border-box;
+      margin: 8px;
+    }
+    .routes p img{
+      width: 24px;
+      height: 24px;
+      background-color: blue;
+      border-radius: 50%;
+    }
+    .settings p {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .side-bar p:hover{
+      background-color: #f2f1f1;
+      border-radius:8px;
+      cursor: pointer;
+    }
+    .stories{
+      display: flex;
+      max-width:930px;
+      height:120px;
+      gap: 12px;
+      overflow-x: scroll;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .story .img{
+      border-radius: 50%;
+      height:86px;
+      width:86px;
+      background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+      padding:3px;
+      box-sizing: border-box;
+    }
+    .img img{
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      border: 2px solid white;
+      box-sizing: border-box; 
+    }
+    .story {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .story p{
+      margin:5px;
+    }
+    .main-feed{
+      width: 80%;
+      padding-left:240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .posts{
+      width: 470px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column; 
+    }
+    .post{
+      width: 100%;
+    }
+    .header{
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 5px;
+      padding-right: 0px;
+    }
+    .h-left img{
+      width: 36px;
+      border-radius: 50%;
+      height: 36px;
+      border: 3px solid transparent;
+      background:linear-gradient(45deg,#f9ce34,
+        #ee2a7b,
+        #6228d7);
+      box-sizing: border-box;
+      
+    }
+    .h-left{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      width:50%;
+    }
+    .hleft-div{
+       border-radius: 50%;
+       height: 42px;
+       width: 42px;
+       background: linear-gradient(45deg,#f9ce34,#ee2a7b, #6228d7
+      );
+      padding: 2px;
+      box-sizing: border-box;
+    }
+    .hleft-div img{
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      border: 2px solid white;
+      box-sizing: border-box;
+      object-fit: cover;
+
+    }
+
+    .h-left :last-child{
+      color:#6A717A;
+      font-weight:400;
+      font-size:14px;
+    }
+    .h-left #hleft-name{
+      font-size: 14px;
+      font-weight: 600;
+      color: #0C1014;
+
+    } 
+    .main-post img{
+      width: 100%;
+      max-height: 700px;
+    }
+    .footer-post{
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      box-sizing: border-box;
+      padding-right: 0px;
+    }
+    .f-left{
+      display: flex;
+      gap: 12px;
+    }
+    .description-post p {
+      margin-top: 5px;
+    }
+    .description-post p :first-child{
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .description-post p :last-child{
+      color:#4150F7;
+      font-weight:400;
+      font-size:14px;
+    }
+    .messages-tag{
+      width:251px;
+      height:56px;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      position: fixed;
+      bottom: 80px;
+      right: 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 30px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    }
+    .messages-tag span{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .messages-photos{
+      display: flex;
+    }
+    .messages-photos img{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    .rel {
+      position: relative;
+    }
+    .two{
+      right: 10px;
+    }
+    .three{
+      right: 20px;
+    }
+    #small-logo{
+      display: none;
+    }
+    .phone-header{
+      display: none;
+    }
+    @media screen and (max-width:1120px) {
+      .main-feed{
+        padding-left: 10%;
+      }
+      .side-bar {
+        width: fit-content;
+      }
+      .stories{
+        width: 80%;
+      }
+      .logo{
+        justify-content: center;
+      }
+      .side-bar p span {
+         display: none;
+      }
+      #big-logo{
+        display: none;
+      }
+      #small-logo{
+        display: block;
+      }
+    }
+    @media screen and (max-width:700px)
+    {
+      .side-bar{
+        bottom: 0;
+        flex-direction: row;
+        height: 70px;
+        width: 100%;
+        padding: 0;
+      }
+      .side-bar .routes{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        background-color: white;
+        height: 70px;
+        
+      }
+      .side-bar .logo,.settings{
+        display: none;
+      }
+      .main-feed{
+        width: 100%;
+        padding: 0;
+        margin-top: 60px;
+      }
+      .stories{
+        width: 100%;
+      }
+      .messages-tag{
+        width: 60px;
+      }
+      .messages-photos,.messages-tag span{
+        display: none;
+      }
+      .phone-header{
+        height:60px;
+        width:100%;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: white;
+      }
+      .like-search{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+        justify-content: right;
+      }
+      .like-search input{
+        width: 60%;
+        border-radius: 30px;
+        border: none;
+        background-color: rgb(243,245,247);
+        font-size: 18px;
+        padding-left: 10px;
+      }
+    }
+    @media screen and (max-width:470px) {
+      .posts{
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+   <main>
+    <section class="side-bar">
+      <div class="logo">
+       <svg id="big-logo" aria-label="Instagram" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="26" role="img" viewBox="0 0 600 150" width="103"><title>Instagram</title><polygon points="0 106.31 15.08 106.31 15.08 8.46 0 11.82 0 106.31"></polygon><path d="M116.77,35.06h0c-5.3,19.69-12.18,38.75-20.69,56.21-1.6,3.2-2.88,4.33-4.65,4.33-1.6,0-2.73-.96-2.73-3.36v-28.03c0-17.78-9.14-29.95-26.14-29.95-8.83,0-16.2,4.16-20.21,11.69v-10.25h-14.28v70.62h14.28v-40.84c0-11.05,7.06-19.37,16.84-19.37,9.13,0,15.23,6.57,15.23,19.22v27.23c0,10.09,5.61,15.05,15.72,15.06,8.34,0,13.47-3.53,17.48-11.69,6.74-13.94,12.83-29.63,17.32-45.33,8.18,14.73,21.97,21.94,21.97,33.47,0,5.93-4.01,11.86-13.63,11.86-5.3,0-10.11-2.4-13.31-5.13l-5.77,11.53c4.01,3.04,11.55,5.6,19.09,5.6,17.32,0,27.43-10.73,27.43-24.19,0-19.06-23.42-29.47-28.23-48.68h-15.72Z"></path><path d="M201.46,92.08c-2.72,1.76-5.12,2.56-7.85,2.56h0c-4.97-.01-7.7-3.05-7.7-8.34v-37.79h16.52v-12.81h-16.52V14.72l-14.28,3.04v17.94h-14.59v12.81h14.59v40.2c0,10.88,7.22,18.58,19.89,18.58,6.73,0,11.55-1.92,15.55-4.48h0s0,0,0,0h0s0,0,0,0l-5.6-10.71Z"></path><path d="M575.46,34.23c-9.95,0-17.98,4.32-21.82,12.01-3.85-7.52-11.22-12.01-21.33-12.01-8.18,0-15.07,3.69-18.6,10.26v-8.81h-14.28v70.63h14.28v-44.51c0-8.97,6.41-15.7,15.23-15.7,8.02,0,13.63,5.44,13.63,16.01v44.2h14.28v-44.52c0-8.97,6.1-15.7,15.08-15.7,8.02,0,13.79,5.44,13.79,16.01v44.2h14.28v-45.49c0-15.86-8.82-26.58-24.54-26.58Z"></path><path d="M263.52,43.37c-5.93-6.09-14.12-9.29-23.26-9.29-19.09,0-33.2,16.01-33.2,36.83s14.12,36.99,33.2,36.99c9.46,0,17.49-3.85,23.26-10.09v8.49h14.28V35.69h-14.28v7.69ZM242.35,95.42c-11.71,0-21.17-9.61-21.17-24.5s9.62-24.34,21.17-24.34,21.17,9.45,21.17,24.34-9.46,24.5-21.17,24.5Z"></path><path d="M472.66,43.37h-.01c-5.93-6.09-14.12-9.29-23.26-9.29-19.09,0-33.2,16.01-33.2,36.83,0,6.39,1.32,12.32,3.68,17.47-4.5,4.85-9.42,7.04-14.74,7.04-8.19,0-13.47-4.97-13.47-15.05s5.61-21.95,18.12-32.36l-6.41-12.33h-36.72v12.81h25.98c-8.98,9.93-14.76,22.42-14.76,33.79,0,16.5,10.91,25.63,25.82,25.63,8.6,0,16.92-3.83,22.41-10.14,5.88,6.33,14,10.14,23.3,10.14,9.3,0,17.49-3.85,23.26-10.09v8.49h14.28V35.69h-14.28v7.69ZM451.49,95.42c-11.71,0-21.17-9.61-21.17-24.5s9.62-24.34,21.17-24.34c11.55,0,21.17,9.45,21.17,24.34s-9.46,24.5-21.17,24.5Z"></path><path d="M344.18,43.36c-5.93-6.09-13.96-9.29-22.93-9.29-18.92,0-33.52,15.53-33.52,36.99,0,19.06,12.04,33.79,28.23,36.36-7.38,4.32-10.75,8.98-10.75,16.02,0,10.09,8.34,18.1,23.26,18.1,19.72,0,29.99-13.46,29.99-30.91V35.67h-14.28v7.69ZM344.18,112.08c0,11.69-6.9,17.13-14.92,17.13-7.22,0-10.59-4.17-10.59-8.49s2.73-9.77,14.76-15.21c4.17-1.92,7.87-4.49,10.75-7.69v14.26ZM323.02,95.42c-11.7,0-21.17-9.61-21.17-24.5,0-14.89,9.62-24.34,21.17-24.34,11.55,0,21.17,9.45,21.17,24.34s-9.46,24.5-21.17,24.5Z"></path></svg>
+       <svg id="small-logo" aria-label="Instagram" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Instagram</title><path d="M12 2.982c2.937 0 3.285.011 4.445.064a6.087 6.087 0 0 1 2.042.379 3.408 3.408 0 0 1 1.265.823 3.408 3.408 0 0 1 .823 1.265 6.087 6.087 0 0 1 .379 2.042c.053 1.16.064 1.508.064 4.445s-.011 3.285-.064 4.445a6.087 6.087 0 0 1-.379 2.042 3.643 3.643 0 0 1-2.088 2.088 6.087 6.087 0 0 1-2.042.379c-1.16.053-1.508.064-4.445.064s-3.285-.011-4.445-.064a6.087 6.087 0 0 1-2.043-.379 3.408 3.408 0 0 1-1.264-.823 3.408 3.408 0 0 1-.823-1.265 6.087 6.087 0 0 1-.379-2.042c-.053-1.16-.064-1.508-.064-4.445s.011-3.285.064-4.445a6.087 6.087 0 0 1 .379-2.042 3.408 3.408 0 0 1 .823-1.265 3.408 3.408 0 0 1 1.265-.823 6.087 6.087 0 0 1 2.042-.379c1.16-.053 1.508-.064 4.445-.064M12 1c-2.987 0-3.362.013-4.535.066a8.074 8.074 0 0 0-2.67.511 5.392 5.392 0 0 0-1.949 1.27 5.392 5.392 0 0 0-1.269 1.948 8.074 8.074 0 0 0-.51 2.67C1.012 8.638 1 9.013 1 12s.013 3.362.066 4.535a8.074 8.074 0 0 0 .511 2.67 5.392 5.392 0 0 0 1.27 1.949 5.392 5.392 0 0 0 1.948 1.269 8.074 8.074 0 0 0 2.67.51C8.638 22.988 9.013 23 12 23s3.362-.013 4.535-.066a8.074 8.074 0 0 0 2.67-.511 5.625 5.625 0 0 0 3.218-3.218 8.074 8.074 0 0 0 .51-2.67C22.988 15.362 23 14.987 23 12s-.013-3.362-.066-4.535a8.074 8.074 0 0 0-.511-2.67 5.392 5.392 0 0 0-1.27-1.949 5.392 5.392 0 0 0-1.948-1.269 8.074 8.074 0 0 0-2.67-.51C15.362 1.012 14.987 1 12 1Zm0 5.351A5.649 5.649 0 1 0 17.649 12 5.649 5.649 0 0 0 12 6.351Zm0 9.316A3.667 3.667 0 1 1 15.667 12 3.667 3.667 0 0 1 12 15.667Zm5.872-10.859a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32Z"></path></svg>
+      </div>
+      <div class="routes">
+        <p>
+          <svg aria-label="Home" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Home</title><path d="m21.762 8.786-7-6.68a3.994 3.994 0 0 0-5.524 0l-7 6.681A4.017 4.017 0 0 0 1 11.68V19c0 2.206 1.794 4 4 4h3.005a1 1 0 0 0 1-1v-7.003a2.997 2.997 0 0 1 5.994 0V22a1 1 0 0 0 1 1H19c2.206 0 4-1.794 4-4v-7.32a4.02 4.02 0 0 0-1.238-2.894Z"></path></svg>
+          <span id="sidebar-home">Home</span>
+        </p>
+        <p>
+          <svg aria-label="Reels" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Reels</title><path d="M22.935 7.468c-.063-1.36-.307-2.142-.512-2.67a5.341 5.341 0 0 0-1.27-1.95 5.345 5.345 0 0 0-1.95-1.27c-.53-.206-1.311-.45-2.672-.513C15.333 1.012 14.976 1 12 1s-3.333.012-4.532.065c-1.36.063-2.142.307-2.67.512-.77.298-1.371.69-1.95 1.27a5.36 5.36 0 0 0-1.27 1.95c-.206.53-.45 1.311-.513 2.672C1.012 8.667 1 9.024 1 12s.012 3.333.065 4.532c.063 1.36.307 2.142.512 2.67.297.77.69 1.372 1.27 1.95.58.581 1.181.974 1.95 1.27.53.206 1.311.45 2.672.513C8.667 22.988 9.024 23 12 23s3.333-.012 4.532-.065c1.36-.063 2.142-.307 2.67-.512a5.33 5.33 0 0 0 1.95-1.27 5.356 5.356 0 0 0 1.27-1.95c.206-.53.45-1.311.513-2.672.053-1.198.065-1.555.065-4.531s-.012-3.333-.065-4.532Zm-1.998 8.972c-.05 1.07-.228 1.652-.38 2.04-.197.51-.434.874-.82 1.258a3.362 3.362 0 0 1-1.258.82c-.387.151-.97.33-2.038.379-1.162.052-1.51.063-4.441.063s-3.28-.01-4.44-.063c-1.07-.05-1.652-.228-2.04-.38a3.354 3.354 0 0 1-1.258-.82 3.362 3.362 0 0 1-.82-1.258c-.151-.387-.33-.97-.379-2.038C3.011 15.28 3 14.931 3 12s.01-3.28.063-4.44c.05-1.07.228-1.652.38-2.04.197-.51.434-.875.82-1.26a3.372 3.372 0 0 1 1.258-.819c.387-.15.97-.329 2.038-.378C8.72 3.011 9.069 3 12 3s3.28.01 4.44.063c1.07.05 1.652.228 2.04.38.51.197.874.433 1.258.82.385.382.622.747.82 1.258.151.387.33.97.379 2.038C20.989 8.72 21 9.069 21 12s-.01 3.28-.063 4.44Zm-4.584-6.828-5.25-3a2.725 2.725 0 0 0-2.745.01A2.722 2.722 0 0 0 6.988 9v6c0 .992.512 1.88 1.37 2.379.432.25.906.376 1.38.376.468 0 .937-.123 1.365-.367l5.25-3c.868-.496 1.385-1.389 1.385-2.388s-.517-1.892-1.385-2.388Zm-.993 3.04-5.25 3a.74.74 0 0 1-.748-.003.74.74 0 0 1-.374-.649V9a.74.74 0 0 1 .374-.65.737.737 0 0 1 .748-.002l5.25 3c.341.196.378.521.378.652s-.037.456-.378.651Z"></path></svg>
+          <span>Reels</span>
+        </p>
+        <p>
+          <svg aria-label="Messages" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Messages</title><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line></svg>
+          <span>Messages</span>
+        </p>
+        <p>
+          <svg aria-label="Search" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Search</title><path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
+          <span>Search</span>
+        </p>
+        <p>
+          <svg aria-label="Notifications" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Notifications</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+          <span>Notifications</span>
+        </p>
+        <p>
+          <svg aria-label="New post" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>New post</title><path d="M21 11h-8V3a1 1 0 1 0-2 0v8H3a1 1 0 1 0 0 2h8v8a1 1 0 1 0 2 0v-8h8a1 1 0 1 0 0-2Z"></path></svg>
+          <span>Create</span>
+        </p>
+        <p>
+          <img src="https://i.pravatar.cc/150?img=59" alt="">
+          <span>Profile</span>
+        </p>
+      </div>
+      <div class="settings">
+        <p>
+          <svg aria-label="Settings" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Settings</title><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="4" y2="4"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="12" y2="12"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="3" x2="21" y1="20" y2="20"></line></svg>
+          <span>More</span>
+        </p>
+        <p>
+          <svg aria-label="Also from Meta" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Also from Meta</title><path d="M9.5 11h5c1.379 0 2.5-1.122 2.5-2.5v-5C17 2.122 15.879 1 14.5 1h-5A2.503 2.503 0 0 0 7 3.5v5C7 9.878 8.12 11 9.5 11ZM9 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5ZM8.499 13h-5a2.503 2.503 0 0 0-2.5 2.5v5c0 1.378 1.12 2.5 2.5 2.5h5c1.379 0 2.5-1.122 2.5-2.5v-5c0-1.378-1.121-2.5-2.5-2.5Zm.5 7.5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5Zm11.5-7.5h-5a2.503 2.503 0 0 0-2.5 2.5v5c0 1.378 1.12 2.5 2.5 2.5h5c1.379 0 2.5-1.122 2.5-2.5v-5c0-1.378-1.121-2.5-2.5-2.5Zm.5 7.5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5Z"></path></svg>
+          <span>Also From Meta</span>
+        </p>
+      </div>
+    </section>
+    <section class="main-feed">
+      <div class="stories">
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=1" alt="">
+          </div>
+          <p>ghannam_a7med</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=2" alt="">
+          </div>
+          <p>Tony_najem</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=3" alt="">
+          </div>
+          <p>youssef3421</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=4" alt="">
+          </div>
+          <p>brahim_kertan</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=5" alt="">
+          </div>
+          <p>linda_kazem</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=6" alt="">
+          </div>
+          <p>omar_kadery</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=7" alt="">
+          </div>
+          <p>moussa.1984</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=8" alt="">
+          </div>
+          <p>elie_amin</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=9" alt="">
+          </div>
+          <p>aya_kabe</p>
+        </div>
+        <div class="story">
+          <div class="img">
+            <img src="https://i.pravatar.cc/150?img=10" alt="">
+          </div>
+          <p>Roua_abdallah</p>
+        </div>
+      </div>
+      <div class="posts">
+        <div class="post">
+          <div class="header">
+            <div class="h-left">
+              <div class="hleft-div">
+                <img src="https://i.pravatar.cc/150?img=17" alt="">
+              </div>
+              <span id="hleft-name">433</span>
+              <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+              <span>7h</span>
+            </div>
+            <div class="h-right">
+             <svg aria-label="More options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+            </div>
+          </div>
+          <div class="main-post">
+            <img src="https://i.pravatar.cc/150?img=12" alt="">
+          </div>
+          <div class="footer-post">
+            <div class="f-left">
+              <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Like</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+              <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Share</title><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line></svg>
+            </div>
+            <div class="f-right">
+              <svg aria-label="Save" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Save</title><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+            </div>
+          </div>
+          <div class="description-post">
+            <p>
+             <span>433</span>
+             <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae error cupiditate recusandae quibusdam est quaerat illo, fuga perspiciatis sapiente ipsa ut mollitia. Harum debitis fuga, quos dolorum inventore at labore. <span>#ai #learn</span>
+            </p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="header">
+            <div class="h-left">
+              <div class="hleft-div">
+                <img src="https://i.pravatar.cc/150?img=16" alt="">
+              </div>          
+              <span id="hleft-name">bookingcom</span>
+              <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+              <span>7h</span>
+            </div>
+            <div class="h-right">
+             <svg aria-label="More options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+            </div>
+          </div>
+          <div class="main-post">
+            <img src="https://i.pravatar.cc/150?img=13" alt="">
+          </div>
+          <div class="footer-post">
+            <div class="f-left">
+              <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Like</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+              <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Share</title><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line></svg>
+            </div>
+            <div class="f-right">
+              <svg aria-label="Save" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Save</title><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+            </div>
+          </div>
+          <div class="description-post">
+            <p>
+             <span>bookingcom</span>
+             <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae error cupiditate recusandae quibusdam est quaerat illo, fuga perspiciatis sapiente ipsa ut mollitia. Harum debitis fuga, quos dolorum inventore at labore. <span>#ai #learn</span>
+            </p>
+          </div>
+        </div>
+         <div class="post">
+          <div class="header">
+            <div class="h-left">
+              <div class="hleft-div"><img src="https://i.pravatar.cc/150?img=15" alt=""></div>
+              <span id="hleft-name">osnplus</span>
+              <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+              <span>7h</span>
+            </div>
+            <div class="h-right">
+             <svg aria-label="More options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+            </div>
+          </div>
+          <div class="main-post">
+            <img src="https://i.pravatar.cc/150?img=14" alt="">
+          </div>
+          <div class="footer-post">
+            <div class="f-left">
+              <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Like</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+              <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+              <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Share</title><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line></svg>
+            </div>
+            <div class="f-right">
+              <svg aria-label="Save" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Save</title><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+            </div>
+          </div>
+          <div class="description-post">
+            <p>
+             <span>osnplus</span>
+             <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae error cupiditate recusandae quibusdam est quaerat illo, fuga perspiciatis sapiente ipsa ut mollitia. Harum debitis fuga, quos dolorum inventore at labore. <span>#ai #learn</span>
+            </p>
+          </div>
+        </div>
+
+      </div>  
+    </section>
+   </main>
+   <article class="messages-tag">
+    <svg aria-label="Messages" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Messages</title><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line></svg>
+    <span>Messages</span>
+    <div class="messages-photos">
+      <img src="https://i.pravatar.cc/150?img=20" class="rel one" alt="">
+      <img src="https://i.pravatar.cc/150?img=21" class="rel two" alt="">
+      <img src="https://i.pravatar.cc/150?img=22" class="rel three" alt="">
+    </div>
+   </article>
+   <section class="phone-header">
+    <div class="phone-logo">
+      <svg aria-label="Instagram" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="26" role="img" viewBox="0 0 600 150" width="103"><title>Instagram</title><polygon points="0 106.31 15.08 106.31 15.08 8.46 0 11.82 0 106.31"></polygon><path d="M116.77,35.06h0c-5.3,19.69-12.18,38.75-20.69,56.21-1.6,3.2-2.88,4.33-4.65,4.33-1.6,0-2.73-.96-2.73-3.36v-28.03c0-17.78-9.14-29.95-26.14-29.95-8.83,0-16.2,4.16-20.21,11.69v-10.25h-14.28v70.62h14.28v-40.84c0-11.05,7.06-19.37,16.84-19.37,9.13,0,15.23,6.57,15.23,19.22v27.23c0,10.09,5.61,15.05,15.72,15.06,8.34,0,13.47-3.53,17.48-11.69,6.74-13.94,12.83-29.63,17.32-45.33,8.18,14.73,21.97,21.94,21.97,33.47,0,5.93-4.01,11.86-13.63,11.86-5.3,0-10.11-2.4-13.31-5.13l-5.77,11.53c4.01,3.04,11.55,5.6,19.09,5.6,17.32,0,27.43-10.73,27.43-24.19,0-19.06-23.42-29.47-28.23-48.68h-15.72Z"></path><path d="M201.46,92.08c-2.72,1.76-5.12,2.56-7.85,2.56h0c-4.97-.01-7.7-3.05-7.7-8.34v-37.79h16.52v-12.81h-16.52V14.72l-14.28,3.04v17.94h-14.59v12.81h14.59v40.2c0,10.88,7.22,18.58,19.89,18.58,6.73,0,11.55-1.92,15.55-4.48h0s0,0,0,0h0s0,0,0,0l-5.6-10.71Z"></path><path d="M575.46,34.23c-9.95,0-17.98,4.32-21.82,12.01-3.85-7.52-11.22-12.01-21.33-12.01-8.18,0-15.07,3.69-18.6,10.26v-8.81h-14.28v70.63h14.28v-44.51c0-8.97,6.41-15.7,15.23-15.7,8.02,0,13.63,5.44,13.63,16.01v44.2h14.28v-44.52c0-8.97,6.1-15.7,15.08-15.7,8.02,0,13.79,5.44,13.79,16.01v44.2h14.28v-45.49c0-15.86-8.82-26.58-24.54-26.58Z"></path><path d="M263.52,43.37c-5.93-6.09-14.12-9.29-23.26-9.29-19.09,0-33.2,16.01-33.2,36.83s14.12,36.99,33.2,36.99c9.46,0,17.49-3.85,23.26-10.09v8.49h14.28V35.69h-14.28v7.69ZM242.35,95.42c-11.71,0-21.17-9.61-21.17-24.5s9.62-24.34,21.17-24.34,21.17,9.45,21.17,24.34-9.46,24.5-21.17,24.5Z"></path><path d="M472.66,43.37h-.01c-5.93-6.09-14.12-9.29-23.26-9.29-19.09,0-33.2,16.01-33.2,36.83,0,6.39,1.32,12.32,3.68,17.47-4.5,4.85-9.42,7.04-14.74,7.04-8.19,0-13.47-4.97-13.47-15.05s5.61-21.95,18.12-32.36l-6.41-12.33h-36.72v12.81h25.98c-8.98,9.93-14.76,22.42-14.76,33.79,0,16.5,10.91,25.63,25.82,25.63,8.6,0,16.92-3.83,22.41-10.14,5.88,6.33,14,10.14,23.3,10.14,9.3,0,17.49-3.85,23.26-10.09v8.49h14.28V35.69h-14.28v7.69ZM451.49,95.42c-11.71,0-21.17-9.61-21.17-24.5s9.62-24.34,21.17-24.34c11.55,0,21.17,9.45,21.17,24.34s-9.46,24.5-21.17,24.5Z"></path><path d="M344.18,43.36c-5.93-6.09-13.96-9.29-22.93-9.29-18.92,0-33.52,15.53-33.52,36.99,0,19.06,12.04,33.79,28.23,36.36-7.38,4.32-10.75,8.98-10.75,16.02,0,10.09,8.34,18.1,23.26,18.1,19.72,0,29.99-13.46,29.99-30.91V35.67h-14.28v7.69ZM344.18,112.08c0,11.69-6.9,17.13-14.92,17.13-7.22,0-10.59-4.17-10.59-8.49s2.73-9.77,14.76-15.21c4.17-1.92,7.87-4.49,10.75-7.69v14.26ZM323.02,95.42c-11.7,0-21.17-9.61-21.17-24.5,0-14.89,9.62-24.34,21.17-24.34,11.55,0,21.17,9.45,21.17,24.34s-9.46,24.5-21.17,24.5Z"></path></svg>
+    </div>
+    <div class="like-search">
+      <input type="text" placeholder="Search...">
+      <svg aria-label="Notifications" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Notifications</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+    </div>
+   </section>
+</body>
+</html>
